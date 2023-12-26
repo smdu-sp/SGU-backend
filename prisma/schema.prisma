@@ -29,7 +29,7 @@ model Permissao {
 model servidores {
   id            Int         @id @default(autoincrement())
   nome          String      @default("0") @db.VarChar(255)
-  login          String     @unique() @default("0") @db.VarChar(50)
+  login         String     @unique() @default("0") @db.VarChar(50)
   email         String      @default("0") @db.VarChar(255)
   rf            String      @default("0") @db.VarChar(7)
   unidade       String      @default("0") @db.VarChar(255)

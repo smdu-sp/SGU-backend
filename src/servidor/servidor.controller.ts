@@ -12,7 +12,7 @@ export class ServidorController {
     return this.servidorService.create(createServidorDto);
   }
 
-  @Get('')
+  @Get('listar-todos')
   findAll(
     @Query('pagina') pagina: number = 1,
     @Query('limite') limite: number = 10,
