@@ -9,8 +9,12 @@ export class UsuarioService {
     private prisma: PrismaService
   ) {}
 
-  create(createUsuarioDto: CreateUsuarioDto) {
-    return 'This action adds a new usuario';
+  async criar(createUsuarioDto: CreateUsuarioDto) {
+    const { login, nome, permissao, status_user } = createUsuarioDto;
+    const novoUsuario = await this.prisma.usuario.create({
+      data: { login, nome, permissao, status_user }
+    });
+    return novoUsuario;
   }
 
   async listarTodos() {
@@ -25,8 +29,12 @@ export class UsuarioService {
     return usuario;
   }
 
-  update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
-    return `This action updates a #${id} usuario`;
+  async atualizar(id: number, updateUsuarioDto: UpdateUsuarioDto) {
+    const atualizarUsuario = await this.prisma.usuario.update({
+      data: updateUsuarioDto,
+      where: { id }
+    });
+    return atualizarUsuario;
   }
 
   remove(id: number) {

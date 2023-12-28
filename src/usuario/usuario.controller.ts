@@ -7,9 +7,9 @@ import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
-  @Post()
-  create(@Body() createUsuarioDto: CreateUsuarioDto) {
-    return this.usuarioService.create(createUsuarioDto);
+  @Post('criar') //localhost:3000/usuario/criar
+  criar(@Body() createUsuarioDto: CreateUsuarioDto) {
+    return this.usuarioService.criar(createUsuarioDto);
   }
 
   @Get('listar-todos') //localhost:3000/usuario/listar-todos
@@ -22,9 +22,9 @@ export class UsuarioController {
     return this.usuarioService.buscarPorId(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUsuarioDto: UpdateUsuarioDto) {
-    return this.usuarioService.update(+id, updateUsuarioDto);
+  @Patch('atualizar/:id') //localhost:3000/usuario/atualizar/{id}
+  atualizar(@Param('id') id: string, @Body() updateUsuarioDto: UpdateUsuarioDto) {
+    return this.usuarioService.atualizar(+id, updateUsuarioDto);
   }
 
   @Delete(':id')

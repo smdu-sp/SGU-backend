@@ -15,7 +15,7 @@ export class ServidorService {
     return 'This action adds a new servidor';
   }
 
-  async findAll(limite: number, pagina: number, busca: string): Promise<IPaginado> {
+  async listarTodos(limite: number, pagina: number, busca: string): Promise<IPaginado> {
     const total = await this.prisma.servidores.count();
     limite = limite > 0 ? (limite > total ? total : limite) : 10;
     pagina = pagina > 0 ? this.utils.verificaPagina(pagina, limite, total) : 1;

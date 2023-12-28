@@ -18,10 +18,10 @@ export class ServidorController {
     @Query('limite') limite: number = 10,
     @Query('busca') busca
   ) {
-    return this.servidorService.findAll(+limite, +pagina, busca);
+    return this.servidorService.listarTodos(+limite, +pagina, busca);
   }
 
-  @Get(':id')
+  @Get('buscar-por-id/:id')
   findOne(@Param('id') id: string) {
     return this.servidorService.findOne(id);
   }
